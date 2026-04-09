@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">172.28.28.10</domain>
+        <!-- Allow all cleartext for development of this private app -->
+        <base-config cleartextTrafficPermitted="true" />
+    </domain-config>
+</network-security-config>
