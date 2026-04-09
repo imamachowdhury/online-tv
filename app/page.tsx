@@ -241,12 +241,6 @@ export default function Home() {
             </div>
             <span className="text-lg font-semibold tracking-tight text-white">Orbit TV</span>
           </div>
-          <button 
-            onClick={() => setIsSidebarOpen(false)}
-            className="lg:hidden text-neutral-400 hover:text-white transition-colors"
-          >
-            <X className="h-5 w-5" />
-          </button>
         </div>
 
         <div className="flex-1 overflow-y-auto py-6 px-4 space-y-6 flex-col">
