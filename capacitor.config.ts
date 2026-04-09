@@ -5,14 +5,13 @@ const config: CapacitorConfig = {
   appName: 'Orbit TV',
   webDir: 'out',
   server: {
-    // We point this directly to your DigitalOcean deployment
-    url: 'https://sea-turtle-app-kascl.ondigitalocean.app/',
+    // We removed the remote 'url' so the app loads from the built-in assets
     // This allows the app to communicate with your local video server
     allowNavigation: ['172.28.28.10'],
     cleartext: true
   },
   android: {
-    // This CRITICAL setting bypasses the "Mixed Content" security block
+    // This setting bypasses the "Mixed Content" security block
     allowMixedContent: true
   }
 };

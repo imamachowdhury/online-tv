@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
+    "build:mobile": "next build --webpack && npx cap sync android",
     "start": "next start",
     "lint": "eslint"
   },
