@@ -227,28 +227,12 @@ const channels = [
 export default function Home() {
   const playerRef = useRef<HTMLVideoElement>(null);
   const [selectedChannel, setSelectedChannel] = useState(channels[0]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="flex h-screen overflow-hidden bg-transparent">
-      {/* Mobile Sidebar Overlay */}
-      <AnimatePresence>
-        {isSidebarOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsSidebarOpen(false)}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Sidebar */}
-      <motion.aside
-        className={`fixed inset-y-0 left-0 z-50 w-72 flex-col border-r border-neutral-800/50 bg-neutral-950/80 backdrop-blur-xl lg:static lg:flex transition-transform duration-300 ease-in-out ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-        }`}
+      {/* Sidebar - Desktop Only */}
+      <motion.aside 
+        className="hidden lg:flex w-80 flex-col border-r border-neutral-800/50 bg-neutral-950/50 backdrop-blur-xl z-40"
       >
         <div className="flex h-16 items-center justify-between px-6 border-b border-neutral-800/50">
           <div className="flex items-center gap-3">
@@ -330,16 +314,10 @@ export default function Home() {
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col min-w-0">
         {/* Mobile Header */}
-        <header className="flex h-16 shrink-0 items-center gap-4 border-b border-neutral-800/50 bg-neutral-950/50 px-4 backdrop-blur-md lg:hidden z-30">
-           <button
-             onClick={() => setIsSidebarOpen(true)}
-             className="p-2 text-neutral-400 hover:text-white transition-colors"
-           >
-             <Menu className="h-6 w-6" />
-           </button>
+        <header className="flex h-16 shrink-0 items-center gap-4 border-b border-neutral-800/50 bg-neutral-950/50 px-6 backdrop-blur-md lg:hidden z-30">
            <div className="flex items-center gap-2">
              <Signal className="h-5 w-5 text-blue-500" />
-             <span className="font-semibold text-white">Orbit TV</span>
+             <span className="font-bold text-white tracking-tight">ORBIT TV</span>
            </div>
            <div className="ml-auto mr-2 truncate flex items-center justify-end">
              <span className="text-xs text-neutral-400 bg-neutral-800/50 px-2 py-1 rounded-md border border-neutral-700/50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px] sm:max-w-[200px]">
@@ -387,14 +365,14 @@ export default function Home() {
             </motion.div>
 
             {/* Mobile Channel List */}
-            <div className="mt-8 w-full lg:hidden pb-10">
-              <h2 className="text-xl font-bold text-white mb-6">Channels</h2>
+            <div className="mt-8 w-full lg:hidden pb-12">
+              <h2 className="text-xl font-bold text-white mb-6 px-4">TV Grid</h2>
               {Array.from(new Set(channels.map((c) => c.category))).map((category) => (
-                <div key={category} className="mb-6">
-                  <h3 className="mb-3 px-2 text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                <div key={category} className="mb-8 px-4">
+                  <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-500 border-l-2 border-blue-500 pl-3">
                     {category}
                   </h3>
-                  <div className="space-y-1">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {channels
                       .filter((c) => c.category === category)
                       .map((channel) => {
@@ -406,40 +384,34 @@ export default function Home() {
                             onClick={() => {
                               setSelectedChannel(channel);
                             }}
-                            className={`group relative flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition-all duration-200 ${
+                            className={`group relative flex flex-col items-center gap-2 rounded-2xl p-4 text-center transition-all duration-300 ${
                               isActive 
-                                ? 'bg-neutral-800/50 text-white' 
-                                : 'text-neutral-400 hover:bg-neutral-800/30 hover:text-neutral-200'
+                                ? 'bg-blue-600/10 ring-1 ring-blue-500/50' 
+                                : 'bg-neutral-900/40 hover:bg-neutral-800/60 ring-1 ring-white/5'
                             }`}
                           >
                             {isActive && (
-                              <motion.div
-                                layoutId="mobile-active-indicator"
-                                className="absolute inset-0 rounded-xl border border-neutral-700/50 bg-neutral-800/50"
-                                initial={false}
-                                transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                              />
+                              <div className="absolute top-2 right-2">
+                                <span className="relative flex h-2 w-2">
+                                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                                </span>
+                              </div>
                             )}
-                            <div className="relative z-10 flex items-center gap-3 w-full">
-                              <div className={`flex shrink-0 items-center justify-center w-8 h-8 rounded-lg overflow-hidden transition-colors ${isActive ? 'bg-blue-600 text-white' : 'bg-neutral-900 group-hover:bg-neutral-800'}`}>
-                                 {(channel as any).logo ? (
-                                   <img src={(channel as any).logo} alt={channel.name} className={`w-full h-full object-contain bg-white p-0.5 ${isActive ? '' : 'opacity-90 group-hover:opacity-100'}`} loading="lazy" />
-                                 ) : (
-                                   <Icon className="h-4 w-4" />
-                                 )}
-                              </div>
-                              <div className="flex flex-col">
-                                <span className="font-medium text-sm">{channel.name}</span>
-                              </div>
-                              {isActive && (
-                                <div className="ml-auto flex items-center gap-1.5">
-                                  <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                                  </span>
-                                </div>
-                              )}
+                            
+                            <div className={`flex shrink-0 items-center justify-center w-14 h-14 rounded-xl overflow-hidden transition-transform duration-300 ${isActive ? 'scale-110 shadow-lg shadow-blue-500/20' : 'group-hover:scale-105'}`}>
+                               {(channel as any).logo ? (
+                                 <img src={(channel as any).logo} alt={channel.name} className={`w-full h-full object-contain bg-white p-1.5 ${isActive ? '' : 'opacity-80 group-hover:opacity-100'}`} loading="lazy" />
+                               ) : (
+                                 <div className="bg-neutral-800 p-3 rounded-lg text-neutral-400">
+                                   <Icon className="h-6 w-6" />
+                                 </div>
+                               )}
                             </div>
+                            
+                            <span className={`font-semibold text-xs transition-colors line-clamp-1 ${isActive ? 'text-white' : 'text-neutral-400 group-hover:text-neutral-200'}`}>
+                              {channel.name}
+                            </span>
                           </button>
                         );
                       })}
