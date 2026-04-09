@@ -27,7 +27,7 @@ const channels = [
     category: 'News & Entertainment',
     icon: Tv,
     logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/4/43/BTV_World_Logo.svg/1280px-BTV_World_Logo.svg.png',
-    url: 'http://172.28.28.10:8080/BTVWorld/tracks-v1a1/mono.m3u8?token=789a5d22d2348d5091995c408bcd9f2ad6115b4f-99ce5d1170b375968aba57c81c3097c5-1775736497-1775725697'
+    url: 'https://www.btvlive.gov.bd/live/37f2df30-3edf-42f3-a2ee-6185002c841c/BD/355ba051-9a60-48aa-adcf-5a6c64da8c5c/index.m3u8'
   },
   {
     id: 'redbulltv',
@@ -226,6 +226,86 @@ const channels = [
     category: 'Entertainment',
     icon: Tv,
     url: 'https://cdn01.medialive.one:2096/GREENENTFHD/tracks-v2a1/mono.ts.m3u8'
+  },
+  {
+    id: 'aljazeera-english',
+    name: 'Al Jazeera English',
+    category: 'News',
+    icon: MonitorPlay,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/AlJazeeraEnglish.qa.png',
+    url: 'https://live-hls-web-aje-fa.thehlive.com/AJE/index.m3u8'
+  },
+  {
+    id: 'bloomberg',
+    name: 'Bloomberg TV US',
+    category: 'News',
+    icon: MonitorPlay,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/BloombergTV.us.png',
+    url: 'https://bloomberg.com/media-manifest/streams/us.m3u8'
+  },
+  {
+    id: 'abcnews',
+    name: 'ABC News Live',
+    category: 'News',
+    icon: MonitorPlay,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/ABCNewsLive.us.png',
+    url: 'https://abc-iview-mediapackag02.akamaized.net/out/v1/6797f1c1fce74a389f41786e66cf5301/index.m3u8'
+  },
+  {
+    id: 'skynews-weather',
+    name: 'Sky News Weather',
+    category: 'News',
+    icon: MonitorPlay,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/SkyNews.uk.png',
+    url: 'https://distro001-gb-hls1-prd.delivery.skycdp.com/easel_cdn/ngrp:weather_loop.stream_all/playlist.m3u8'
+  },
+  {
+    id: 'nasa-tv',
+    name: 'NASA TV Public',
+    category: 'Entertainment',
+    icon: Tv,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/NASAPublic.us.png',
+    url: 'https://ntv1.akamaized.net/hls/live/2014049/NASA-Public/master.m3u8'
+  },
+  {
+    id: 'fashion-tv',
+    name: 'Fashion TV',
+    category: 'Entertainment',
+    icon: Tv,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/FashionTV.fr.png',
+    url: 'https://fash1043.cloudycdn.services/slive/_definst_/ftv_ftv_mid_pure/playlist.m3u8'
+  },
+  {
+    id: 'documentary-plus',
+    name: 'Documentary+',
+    category: 'Entertainment',
+    icon: Tv,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/DocumentaryPlus.us.png',
+    url: 'https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8'
+  },
+  {
+    id: 'pbs-kids',
+    name: 'PBS Kids',
+    category: 'Kids',
+    icon: Tv,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/PBSKids.us.png',
+    url: 'https://livestream.pbskids.org/out/v1/14507d931bbe48a69287e4850e53443c/est.m3u8'
+  },
+  {
+    id: 'lego-channel',
+    name: 'Lego Channel',
+    category: 'Kids',
+    icon: Tv,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/LegoChannel.us.png',
+    url: 'https://jmp2.uk/stvp-GBBC4300005AL'
+  },
+  {
+    id: 'fifa-plus',
+    name: 'FIFA+',
+    category: 'Sports',
+    icon: Activity,
+    logo: 'https://iptv-org.github.io/browsing/logos/channels/FIFAPlus.intl.png',
+    url: 'https://d2w9q46ikgrcwx.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-of5cbk3sav3w5/v1/sysdata_s_p_a_fifa_7/samsungheadend_us/latest/main/hls/playlist.m3u8'
   }
 ];
 
