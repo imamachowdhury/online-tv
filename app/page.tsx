@@ -30,6 +30,14 @@ const channels = [
     url: 'https://www.btvlive.gov.bd/live/37f2df30-3edf-42f3-a2ee-6185002c841c/BD/355ba051-9a60-48aa-adcf-5a6c64da8c5c/index.m3u8'
   },
   {
+    id: 'btv-news',
+    name: 'BTV News',
+    category: 'News',
+    icon: MonitorPlay,
+    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/15/BTV_News_Logo.svg/1280px-BTV_News_Logo.svg.png',
+    url: 'https://www.btvlive.gov.bd/live/37f2df30-3edf-42f3-a2ee-6185002c841c/BD/d96eb7f4-83c2-4472-9597-3568390a8ebf/index.m3u8'
+  },
+  {
     id: 'redbulltv',
     name: 'Red Bull TV',
     category: 'Sports',
