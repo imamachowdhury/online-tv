@@ -1,9 +1,14 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { useRef, useState } from 'react';
-import { Tv, MonitorPlay, Activity, Signal, PlayCircle, Menu, X } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Tv, MonitorPlay, Activity, Signal, PlayCircle, Menu, X, ArrowUpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { App } from '@capacitor/app';
+
+const APP_VERSION = "1.0.0"; // Increment this when you release a new version
+const GITHUB_RAW_PACKAGE = "https://raw.githubusercontent.com/imamachowdhury/online-tv/main/package.json";
+const GITHUB_REPO_URL = "https://github.com/imamachowdhury/online-tv";
 
 const ReactHlsPlayer = dynamic(() => import('react-hls-player'), { ssr: false });
 
@@ -227,9 +232,74 @@ const channels = [
 export default function Home() {
   const playerRef = useRef<HTMLVideoElement>(null);
   const [selectedChannel, setSelectedChannel] = useState(channels[0]);
+  const [updateAvailable, setUpdateAvailable] = useState<string | null>(null);
 
+  useEffect(() => {
+    const checkForUpdates = async () => {
+      try {
+        const response = await fetch(GITHUB_RAW_PACKAGE);
+        if (!response.ok) return;
+        
+        const remotePackage = await response.json();
+        const remoteVersion = remotePackage.version;
+
+        if (remoteVersion !== APP_VERSION) {
+          console.log(`Update Available: ${remoteVersion} (Local: ${APP_VERSION})`);
+          setUpdateAvailable(remoteVersion);
+        }
+      } catch (error) {
+        console.error("Failed to check for updates:", error);
+      }
+    };
+
+    // Only run update check if in a native environment or specifically for the user's test
+    checkForUpdates();
+  }, []);
   return (
     <div className="flex h-screen overflow-hidden bg-transparent">
+      {/* Update Notifier Banner */}
+      <AnimatePresence>
+        {updateAvailable && (
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
+            className="fixed top-20 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-md"
+          >
+            <div className="relative group overflow-hidden rounded-2xl bg-blue-600 p-[1px] shadow-2xl shadow-blue-500/30">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 group-hover:opacity-100 transition-opacity opacity-50" />
+              <div className="relative flex items-center justify-between gap-4 bg-neutral-950 p-4 rounded-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-600/20 text-blue-500">
+                    <ArrowUpCircle className="h-6 w-6" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-white tracking-tight">Update Available!</span>
+                    <span className="text-xs text-neutral-400">Version {updateAvailable} is ready</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setUpdateAvailable(null)}
+                    className="px-3 py-1.5 text-xs font-semibold text-neutral-400 hover:text-white transition-colors"
+                  >
+                    Later
+                  </button>
+                  <a
+                    href={`${GITHUB_REPO_URL}/releases/latest`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-1.5 text-xs font-bold bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20"
+                  >
+                    Update
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Sidebar - Desktop Only */}
       <motion.aside 
         className="hidden lg:flex w-80 flex-col border-r border-neutral-800/50 bg-neutral-950/50 backdrop-blur-xl z-40"
