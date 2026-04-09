@@ -22,6 +22,14 @@ const channels = [
     url: 'http://172.28.28.10:8080/TSports/tracks-v1a1/mono.m3u8?token=ded42b8b19ee98825c2ca017a393eb122aef9d59-e61f6959c44804652dd3ab930a19246b-1775734814-1775724014'
   },
   {
+    id: 'foxsports',
+    name: 'Fox Sports',
+    category: 'Sports',
+    icon: Activity,
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/FOX_Sports_logo.svg/1280px-FOX_Sports_logo.svg.png',
+    url: 'https://d1jzu95oc8fgt3.cloudfront.net/FOX_Sports480p.m3u8'
+  },
+  {
     id: 'btv',
     name: 'BTV World',
     category: 'News & Entertainment',
