@@ -260,7 +260,6 @@ export default function Home() {
                         key={channel.id}
                         onClick={() => {
                           setSelectedChannel(channel);
-                          setIsSidebarOpen(false);
                         }}
                         className={`group relative flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left transition-all duration-200 ${
                           isActive 
