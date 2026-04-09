@@ -38,6 +38,14 @@ const channels = [
     url: 'https://www.btvlive.gov.bd/live/37f2df30-3edf-42f3-a2ee-6185002c841c/BD/d96eb7f4-83c2-4472-9597-3568390a8ebf/index.m3u8'
   },
   {
+    id: 'sangsad-tv',
+    name: 'Sangsad TV',
+    category: 'News & Entertainment',
+    icon: Tv,
+    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Sangsad_Bangladesh_Television_logo.svg/1280px-Sangsad_Bangladesh_Television_logo.svg.png',
+    url: 'https://www.btvlive.gov.bd/live/37f2df30-3edf-42f3-a2ee-6185002c841c/BD/9ee3b4f9-fd0a-47c5-a135-2575c5691613/index.m3u8'
+  },
+  {
     id: 'redbulltv',
     name: 'Red Bull TV',
     category: 'Sports',
