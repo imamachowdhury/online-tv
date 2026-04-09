@@ -402,30 +402,33 @@ export default function Home() {
           </div>
 
           <div className="flex-1 flex flex-col items-center justify-start lg:justify-center">
-            <motion.div 
-              key={selectedChannel.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="w-full max-w-6xl relative group shrink-0"
-            >
-              {/* Glow Effect directly behind the player, responsive based on container */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-              
-              <div className="relative rounded-2xl overflow-hidden bg-black ring-1 ring-white/10 shadow-2xl aspect-video flex items-center justify-center">
-                {/* @ts-ignore */}
-                <ReactHlsPlayer
-                  src={selectedChannel.url}
-                  autoPlay={true}
-                  controls={true}
-                  width="100%"
-                  height="100%"
-                  // @ts-ignore
-                  playerRef={playerRef}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </motion.div>
+            {/* Sticky Player Wrapper for Mobile */}
+            <div className="sticky top-0 z-20 w-full bg-neutral-950/80 backdrop-blur-lg lg:static lg:bg-transparent lg:backdrop-blur-none py-2 lg:py-0 mb-4 lg:mb-0">
+              <motion.div 
+                key={selectedChannel.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="w-full max-w-6xl relative group shrink-0"
+              >
+                {/* Glow Effect directly behind the player, responsive based on container */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                
+                <div className="relative rounded-2xl overflow-hidden bg-black ring-1 ring-white/10 shadow-2xl aspect-video flex items-center justify-center">
+                  {/* @ts-ignore */}
+                  <ReactHlsPlayer
+                    src={selectedChannel.url}
+                    autoPlay={true}
+                    controls={true}
+                    width="100%"
+                    height="100%"
+                    // @ts-ignore
+                    playerRef={playerRef}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </motion.div>
+            </div>
 
             {/* Mobile Channel List */}
             <div className="mt-8 w-full lg:hidden pb-12">
