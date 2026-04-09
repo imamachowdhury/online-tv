@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Orbit TV",
+  title: "Oz TV",
   description: "High-Quality Online TV Streaming Platform",
   manifest: "/manifest.json",
   appleWebApp: {

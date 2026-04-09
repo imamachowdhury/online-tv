@@ -239,7 +239,7 @@ export default function Home() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.5)]">
               <Signal className="h-5 w-5 text-white" />
             </div>
-            <span className="text-lg font-semibold tracking-tight text-white">Orbit TV</span>
+            <span className="text-lg font-semibold tracking-tight text-white">Oz TV</span>
           </div>
         </div>
 
@@ -310,7 +310,7 @@ export default function Home() {
         <header className="flex h-16 shrink-0 items-center gap-4 border-b border-neutral-800/50 bg-neutral-950/50 px-6 backdrop-blur-md lg:hidden z-30">
            <div className="flex items-center gap-2">
              <Signal className="h-5 w-5 text-blue-500" />
-             <span className="font-bold text-white tracking-tight">ORBIT TV</span>
+             <span className="font-bold text-white tracking-tight">OZ TV</span>
            </div>
            <div className="ml-auto mr-2 truncate flex items-center justify-end">
              <span className="text-xs text-neutral-400 bg-neutral-800/50 px-2 py-1 rounded-md border border-neutral-700/50 whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px] sm:max-w-[200px]">
@@ -359,7 +359,7 @@ export default function Home() {
 
             {/* Mobile Channel List */}
             <div className="mt-8 w-full lg:hidden pb-12">
-              <h2 className="text-xl font-bold text-white mb-6 px-4">TV Grid</h2>
+              <h2 className="text-xl font-bold text-white mb-6 px-4">Oz Grid</h2>
               {Array.from(new Set(channels.map((c) => c.category))).map((category) => (
                 <div key={category} className="mb-8 px-4">
                   <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-500 border-l-2 border-blue-500 pl-3">

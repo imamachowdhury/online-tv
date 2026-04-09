@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.orbit.tv',
-  appName: 'Orbit TV',
+  appName: 'Oz TV',
   webDir: 'out',
   server: {
     // We removed the remote 'url' so the app loads from the built-in assets
